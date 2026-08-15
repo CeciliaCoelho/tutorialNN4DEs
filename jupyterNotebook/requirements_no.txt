@@ -1,0 +1,37 @@
+# Neural Operators tutorial — hands-on notebooks
+#
+#   neural_operators_handson.ipynb         the full demo (needs the widgets below)
+#   neural_operators_handson_simple.ipynb  step-by-step edition, <=10 lines per
+#                                          cell; needs no widgets, uses nolab.py
+#
+#   python3 -m venv .venv
+#   .venv/bin/pip install -r requirements.txt
+#   .venv/bin/jupyter lab
+#
+# (On Google Colab only `neuraloperator` needs installing; the rest is preinstalled.)
+
+# core: solver, plots, progress bars, widgets
+numpy
+scipy
+matplotlib
+tqdm
+ipywidgets
+ipycanvas               # draw-your-own-permeability widget (Experiment 1)
+
+# experiments 2-4: models
+# On Apple Silicon the notebook trains on the GPU via the "mps" backend
+# (~10-30x quicker than the CPU here). That needs a PyTorch new enough to
+# implement FFTs and complex tensors on Metal -- install the newest you can.
+# The notebook probes for this and falls back to the CPU if it is missing.
+torch>=2.0
+neuraloperator>=0.3     # the FNO library (imports as `neuralop`)
+
+# experiment 4: stream the coarse ERA5 subset from WeatherBench 2
+#   (optional -- the notebook falls back to a synthetic stand-in if offline)
+xarray
+zarr
+gcsfs
+dask
+
+# to run the notebook itself
+jupyter
